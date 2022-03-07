@@ -1,0 +1,7 @@
+{
+  "name": "firebase-emulators-ionic-vue",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
