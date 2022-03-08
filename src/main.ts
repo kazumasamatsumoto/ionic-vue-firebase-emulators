@@ -53,10 +53,10 @@ export const db = getFirestore();
 export const storage = getStorage();
 export const functions = getFunctions(getApp());
 
-connectAuthEmulator(auth, 'http://localhost:9099');
-connectFirestoreEmulator(db, 'localhost', 8080);
-connectStorageEmulator(storage, 'localhost', 9199);
-connectFunctionsEmulator(functions, "localhost", 5001);
+// connectAuthEmulator(auth, 'http://localhost:9099');
+// connectFirestoreEmulator(db, 'localhost', 8080);
+// connectStorageEmulator(storage, 'localhost', 9199);
+// connectFunctionsEmulator(functions, "localhost", 5001);
 
 const app = createApp(App)
   .use(IonicVue)
