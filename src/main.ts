@@ -1,7 +1,20 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
-import { initializeApp, getApps } from 'firebase/app'
+import { initializeApp, getApps, getApp } from 'firebase/app'
+import {
+  connectAuthEmulator,
+  getAuth,
+} from 'firebase/auth';
+import {
+  getFirestore,
+  connectFirestoreEmulator,
+} from 'firebase/firestore';
+import {
+  getStorage,
+  connectStorageEmulator,
+} from 'firebase/storage';
+import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
 
 import { IonicVue } from '@ionic/vue';
 
@@ -35,6 +48,16 @@ const config = {
 const apps = getApps()
 apps.length ? apps[0] : initializeApp(config)
 
+export const auth = getAuth();
+export const db = getFirestore();
+export const storage = getStorage();
+export const functions = getFunctions(getApp());
+
+connectAuthEmulator(auth, 'http://localhost:9099');
+connectFirestoreEmulator(db, 'localhost', 8080);
+connectStorageEmulator(storage, 'localhost', 9199);
+connectFunctionsEmulator(functions, "localhost", 5001);
+
 const app = createApp(App)
   .use(IonicVue)
   .use(router);
@@ -42,3 +65,4 @@ const app = createApp(App)
 router.isReady().then(() => {
   app.mount('#app');
 });
+
